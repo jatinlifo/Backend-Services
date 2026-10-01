@@ -1,4 +1,10 @@
+
+/* This is simple register page like we have
+only some field then we can use this code
+ */
+
 import SimpleRegister from "../mongoDB-models/simpleRegister.schema.js";
+import bcrypt from 'bcrypt';
 
 const simpleRegister = async (req, res) => {
 
@@ -22,7 +28,7 @@ const simpleRegister = async (req, res) => {
             });
         }
 
-        const existingName = await SimpleRegister.findOne({ name });
+        const existingName = await SimpleRegister.findOne({ username });
 
         if (existingName) {
             return res.status(409).json({
@@ -30,19 +36,22 @@ const simpleRegister = async (req, res) => {
             });
         }
 
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        console.log("After hashing the password", hashedPassword);
+
         const user = await SimpleRegister.create(
             {
                 username,
                 email,
-                password,
+                password : hashedPassword
             }
         );
         return res.status(201)
             .json({
                 success: true,
-                message: "User Rei wgister successfully",
+                message: "User Register successfully",
                 userData: user
-
             })
 
     } catch (error) {
