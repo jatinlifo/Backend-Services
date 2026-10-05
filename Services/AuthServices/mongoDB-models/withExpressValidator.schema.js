@@ -30,7 +30,6 @@ const WithExpressValidatorSchema = new Schema(
         },
         confirmPassword : {
             type: String,
-            required: true,
         },
         dob: {
             type: Date,
