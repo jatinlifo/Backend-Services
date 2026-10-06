@@ -3,7 +3,7 @@
 only some field then we can use this code
  */
 
-import SimpleRegister from "../mongoDB-models/simpleRegister.schema.js";
+import RegisterSchema from '../mongoDB-models/register.schema.js';
 import bcrypt from 'bcrypt';
 
 const simpleRegister = async (req, res) => {
@@ -20,7 +20,7 @@ const simpleRegister = async (req, res) => {
                 })
         }
 
-        const existingEmail = await SimpleRegister.findOne({ email });
+        const existingEmail = await RegisterSchema.findOne({ email });
 
         if (existingEmail) {
             return res.status(409).json({
@@ -28,7 +28,7 @@ const simpleRegister = async (req, res) => {
             });
         }
 
-        const existingName = await SimpleRegister.findOne({ username });
+        const existingName = await RegisterSchema.findOne({ username });
 
         if (existingName) {
             return res.status(409).json({
@@ -40,7 +40,7 @@ const simpleRegister = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, saltRounds);
         console.log("After hashing the password", hashedPassword);
 
-        const user = await SimpleRegister.create(
+        const user = await RegisterSchema.create(
             {
                 username,
                 email,

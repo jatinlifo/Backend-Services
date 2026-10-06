@@ -1,6 +1,6 @@
 import { body } from 'express-validator';
 
-const registerWithExpressValidator = [
+const registerSchemaWithExpressValidator = [
 
     body("username")
         .trim()
@@ -32,4 +32,4 @@ const registerWithExpressValidator = [
         .withMessage("Invalid phone number")
 ];
 
-export default registerWithExpressValidator;
+export default registerSchemaWithExpressValidator;

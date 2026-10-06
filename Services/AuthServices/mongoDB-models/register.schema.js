@@ -1,6 +1,6 @@
 import mongoose, {Schema} from "mongoose";
 
-const WithExpressValidatorSchema = new Schema(
+const registerSchema = new Schema(
     {
         username: {
             type : String,
@@ -10,7 +10,7 @@ const WithExpressValidatorSchema = new Schema(
         surname: {
             type: String,
         },
-        middlename: {
+        middleName: {
             type: String,
         },
         familyName: {
@@ -44,6 +44,6 @@ const WithExpressValidatorSchema = new Schema(
     {timestamps: true}
 )
 
-const WithExpressValidator = mongoose.model('WithExpressValidator', WithExpressValidatorSchema);
+const RegisterSchema = mongoose.model('RegisterSchema', registerSchema);
 
-export default WithExpressValidator;
+export default RegisterSchema;
