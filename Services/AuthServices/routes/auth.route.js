@@ -23,7 +23,7 @@ authRouter.post('/express-validator-register',
 
 
 
-// with zod validator service
+// with zod validator service..
 import withZodValidator from '../Register/withZod.controller.js';
 import { registerSchemaWithZodValidator } from '../validators/registerWithZodValidator.validator.js';
 import { registerMiddlewareUsingZodValidator } from '../middleware/withZodValidator.middleware.js';
