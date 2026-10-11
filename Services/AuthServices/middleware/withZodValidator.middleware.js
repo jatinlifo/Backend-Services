@@ -1,22 +1,22 @@
 import { ZodError } from "zod";
+import { registerSchemaWithZodValidator } from '../validators/registerWithZodValidator.validator.js';
 
-export const registerMiddlewareUsingZodValidator = (schema) => {
+export const registerMiddlewareUsingZodValidator = (req, res, next) => {
 
-    return (req, res, next) => {
 
-        try {
+    try {
 
-            const validatedData = schema.parse(req.body);
+        const validatedData = registerSchemaWithZodValidator.parse(req.body);
 
-            req.validatedData = validatedData;
+        req.validatedData = validatedData;
 
-            next();
+        next();
 
-        } catch (error) {
+    } catch (error) {
 
-            if (error instanceof ZodError) {
+        if (error instanceof ZodError) {
 
-                return res.status(400)
+            return res.status(400)
                 .json({
                     success: false,
                     message: "Validation failed",
@@ -25,9 +25,8 @@ export const registerMiddlewareUsingZodValidator = (schema) => {
                         message: issue.message,
                     })),
                 });
-            }
-
-            next(error);
         }
+
+        next(error);
     }
 }

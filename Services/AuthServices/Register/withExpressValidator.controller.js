@@ -51,6 +51,7 @@ const withExpressValidator = async (req, res) => {
         .json({
             success: true,
             userInfo : user,
+            message: "User Register using express Validator"
         })
     } catch (error) {
 

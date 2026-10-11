@@ -50,7 +50,7 @@ const simpleRegister = async (req, res) => {
         return res.status(201)
             .json({
                 success: true,
-                message: "User Register successfully",
+                message: "User Register successfully using if else",
                 userData: user
             })
 

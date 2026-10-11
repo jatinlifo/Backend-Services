@@ -43,6 +43,7 @@ const withZodValidator = async (req, res, next) => {
         .json({
             success: true,
             userInfo : user,
+            messaage: "User Register using Zod Validation"
         })
 
     } catch (error) {
