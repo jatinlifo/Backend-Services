@@ -1,5 +1,11 @@
 import generateOTP from "../utils/otpLogic.utils.js";
+
+// using Nodemailer service
 import sendOTPUsingNodeMailer from "./With-OTP/usingNodemailer.js";
+
+// using Resend API service
+import sendOTPUsingResendAPI from "./With-OTP/usingResendAPI.js";
+
 
 const testOTP = async () => {
 
@@ -7,7 +13,11 @@ const testOTP = async () => {
 
         const otp = generateOTP();
 
-        await sendOTPUsingNodeMailer("jatindev82@gmail.com", otp);
+        // using nodemailer
+        // await sendOTPUsingNodeMailer("jatindev82@gmail.com", otp);
+
+        // using resend api
+        await sendOTPUsingResendAPI("jatindeg82@gmail.com", otp)
 
         console.log("OTP email sent successfully");
 
@@ -17,3 +27,7 @@ const testOTP = async () => {
 }
 
 testOTP();
+
+
+
+

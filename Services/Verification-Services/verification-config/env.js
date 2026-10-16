@@ -16,7 +16,10 @@ dotenv.config({
 
 const config = {
     SMTP_USER: process.env.EMAIL_USER,
-    SMTP_PASS: process.env.EMAIL_PASS
+    SMTP_PASS: process.env.EMAIL_PASS,
+
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+    FROM_EMAIL : process.env.FROM_EMAIL,
 };
 
 export default config;
